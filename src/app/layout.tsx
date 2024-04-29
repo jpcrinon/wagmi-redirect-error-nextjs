@@ -5,6 +5,7 @@ import { cookieToInitialState } from "wagmi";
 import { headers } from "next/headers";
 import { config } from "@/config";
 import ContextProvider from "@/context";
+import { redirectAction } from "@/actions/actions";
 
 const inter = interFonts({ subsets: ["latin"] });
 
@@ -24,6 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ContextProvider initialState={initialState}>
+          <form action={redirectAction}>
+            <button type="submit">Redirect</button>
+          </form>
           {children}
         </ContextProvider>
       </body>
